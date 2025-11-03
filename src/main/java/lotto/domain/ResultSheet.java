@@ -1,34 +1,37 @@
 package lotto.domain;
 
-import java.util.LinkedHashMap;
+import java.util.Collections;
+import java.util.EnumMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class ResultSheet {
 
-    private final Map<Rank, Integer> resultSheet = new LinkedHashMap<>();
+    private final Map<Rank, Integer> counts = new EnumMap<>(Rank.class);
 
     public ResultSheet() {
-        resultSheet.put(Rank.FIFTH, 0);
-        resultSheet.put(Rank.FOURTH, 0);
-        resultSheet.put(Rank.THIRD, 0);
-        resultSheet.put(Rank.SECOND, 0);
-        resultSheet.put(Rank.FIRST, 0);
+        for (Rank rank : Rank.values()) {
+            counts.put(rank, 0);
+        }
     }
 
-    public Map<Rank, Integer> getResultSheet() {
-        return resultSheet;
+    public Map<Rank, Integer> getCounts() {
+        return Collections.unmodifiableMap(counts);
     }
 
     public void increase(Rank rank) {
-        resultSheet.put(rank, resultSheet.get(rank) + 1);
+        counts.put(rank, counts.get(rank) + 1);
     }
 
-    public int calculateProceeds() {
-        int proceeds = 0;
-        for (Entry<Rank, Integer> entry : resultSheet.entrySet()) {
-            proceeds += entry.getKey().getPrice() * entry.getValue();
+    public long calculateProceeds() {
+        long proceeds = 0L;
+        for (Rank rank : Rank.values()) {
+            Integer count = counts.get(rank);
+            proceeds += (long) rank.getPrice() * count;
         }
         return proceeds;
+    }
+
+    public int getCount(Rank rank) {
+        return counts.get(rank);
     }
 }
