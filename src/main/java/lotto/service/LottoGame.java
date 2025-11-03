@@ -42,7 +42,7 @@ public class LottoGame {
 
     public double calculateRateOfReturn(PurchaseAmount purchaseAmount, ResultSheet resultSheet) {
         int amount = purchaseAmount.getAmount();
-        int proceeds = resultSheet.calculateProceeds();
+        long proceeds = resultSheet.calculateProceeds();
         return ((double) proceeds / amount) * 100;
     }
 }
