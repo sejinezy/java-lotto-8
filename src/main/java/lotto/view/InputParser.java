@@ -7,6 +7,7 @@ public class InputParser {
 
     private static final String ERR_IS_BLANK = "[ERROR]빈 값은 허용되지 않습니다.";
     private static final String REGEX = ",";
+    private final static String ERROR_NUMBER_TYPE = "[ERROR] 정수 숫자만 가능합니다.";
 
     private InputParser() {
 
@@ -32,6 +33,22 @@ public class InputParser {
         return numbers;
     }
 
+    public static List<Integer> changeType(List<String> winningNumbersInput) {
+        List<Integer> numbers = new ArrayList<>();
+        for (String number : winningNumbersInput) {
+            numbers.add(changeType(number));
+        }
+        return numbers;
+    }
+
+    public static int changeType(String bonusInput) {
+        try {
+            return Integer.parseInt(bonusInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_NUMBER_TYPE);
+        }
+    }
+
     private static boolean isBlank(String raw) {
         return raw == null || raw.isBlank();
     }
@@ -39,6 +56,4 @@ public class InputParser {
     private static String[] splitByRegex(String raw) {
         return raw.split(REGEX, -1);
     }
-
-
 }
