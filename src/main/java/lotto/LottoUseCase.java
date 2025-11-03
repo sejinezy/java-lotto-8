@@ -4,27 +4,24 @@ import lotto.domain.LottoCart;
 import lotto.domain.LottoGenerator;
 import lotto.domain.PurchaseAmount;
 import lotto.domain.WinningLotto;
-import lotto.domain.port.PickRandomNumbers;
 import lotto.service.LottoGame;
 import lotto.domain.ResultSheet;
 
 public class LottoUseCase {
 
-    private final PickRandomNumbers pickRandomNumbers;
+    private final LottoGenerator lottoGenerator;
     private final LottoGame lottoGame;
 
-    public LottoUseCase(PickRandomNumbers pickRandomNumbers, LottoGame lottoGame) {
-        this.pickRandomNumbers = pickRandomNumbers;
+    public LottoUseCase(LottoGenerator lottoGenerator, LottoGame lottoGame) {
+        this.lottoGenerator = lottoGenerator;
         this.lottoGame = lottoGame;
     }
 
     public LottoCart generateLottoCart(PurchaseAmount purchaseAmount) {
-        LottoGenerator lottoGenerator = new LottoGenerator(pickRandomNumbers);
         return lottoGenerator.generateLottoCart(purchaseAmount);
     }
 
-    public double calculateRateOfReturn(WinningLotto winningLotto, LottoCart lottoCart, PurchaseAmount purchaseAmount) {
-        ResultSheet resultSheet = compare(winningLotto, lottoCart);
+    public double calculateRateOfReturn(ResultSheet resultSheet, PurchaseAmount purchaseAmount) {
         return lottoGame.calculateRateOfReturn(purchaseAmount, resultSheet);
     }
 
