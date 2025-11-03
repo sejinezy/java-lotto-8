@@ -25,11 +25,11 @@ class LottoGameTest {
 
         ResultSheet resultSheet = new LottoGame().compare(winningLotto, lottoCart);
 
-        assertThat(resultSheet.getResultSheet().get(Rank.FIFTH)).isEqualTo(1);
-        assertThat(resultSheet.getResultSheet().get(Rank.FOURTH)).isEqualTo(0);
-        assertThat(resultSheet.getResultSheet().get(Rank.THIRD)).isEqualTo(0);
-        assertThat(resultSheet.getResultSheet().get(Rank.SECOND)).isEqualTo(0);
-        assertThat(resultSheet.getResultSheet().get(Rank.FIRST)).isEqualTo(1);
+        assertThat(resultSheet.getCounts().get(Rank.FIFTH)).isEqualTo(1);
+        assertThat(resultSheet.getCounts().get(Rank.FOURTH)).isEqualTo(0);
+        assertThat(resultSheet.getCounts().get(Rank.THIRD)).isEqualTo(0);
+        assertThat(resultSheet.getCounts().get(Rank.SECOND)).isEqualTo(0);
+        assertThat(resultSheet.getCounts().get(Rank.FIRST)).isEqualTo(1);
     }
 
     @Test

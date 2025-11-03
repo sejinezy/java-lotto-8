@@ -1,6 +1,5 @@
 package lotto.view;
 
-
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
@@ -32,7 +31,7 @@ class InputParserTest {
 
     @Test
     void 정수_숫자가_아닌경우_예외_발생() {
-        assertThatThrownBy(() -> InputParser.changeType("a"))
+        assertThatThrownBy(() -> InputParser.toInt("a"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ERROR_NUMBER_TYPE);
     }
