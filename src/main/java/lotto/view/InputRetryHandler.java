@@ -4,14 +4,16 @@ import java.util.function.Supplier;
 
 public class InputRetryHandler {
 
-    public static <T> T askUtilValid(Supplier<T> supplier) {
+    private InputRetryHandler() {
+    }
+
+    public static <T> T askUntilValid(Supplier<T> supplier) {
         while (true) {
             try {
                 return supplier.get();
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                OutputView.printError(e.getMessage());
             }
         }
     }
-
 }
