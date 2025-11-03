@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 
 class WinningNumbersTest {
 
-    private static final String ERR_NUMBER_RANGE = "[ERROR] 1 ~ 45 사이의 숫자만 가능합니다.";
-    private static final String ERR_DUPLICATE_NUMBERS = "[ERROR] 로또 번호는 중복되면 안됩니다.";
-    private static final String ERR_LOTTO_SIZE = "[ERROR] 로또 번호는 6개여야 합니다.";
+    private static final String ERR_NUMBER_RANGE = "1 ~ 45 사이의 숫자만 가능합니다.";
+    private static final String ERR_DUPLICATE_NUMBERS = "로또 번호는 중복되면 안됩니다.";
+    private static final String ERR_LOTTO_SIZE = "로또 번호는 6개여야 합니다.";
 
     @Test
     void 숫자_개수가_6개가_아니면_예외_발생() {

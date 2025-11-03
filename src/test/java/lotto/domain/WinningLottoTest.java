@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class WinningLottoTest {
 
-    private static final String ERR_NUMBERS_DUPLICATION = "[ERROR] 중복된 값이 있습니다.";
+    private static final String ERR_NUMBERS_DUPLICATION = "중복된 값이 있습니다.";
 
     @Test
     void 당첨_번호와_보너스_번호는_서로_중복되면_안된다() {

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class PurchaseAmountTest {
 
-    private final static String ERR_AMOUNT_UNIT = "[ERROR] 구입 금액은 1,000단위만 가능합니다.";
+    private final static String ERR_AMOUNT_UNIT = "구입 금액은 1,000단위만 가능합니다.";
 
     @Test
     void 구입_금액이_1000원_단위가_아니면_예외가_발생한다() {

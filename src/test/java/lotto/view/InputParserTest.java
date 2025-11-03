@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 class InputParserTest {
 
-    private static final String ERR_IS_BLANK = "[ERROR]빈 값은 허용되지 않습니다.";
-    private final static String ERROR_NUMBER_TYPE = "[ERROR] 정수 숫자만 가능합니다.";
+    private static final String ERR_IS_BLANK = "빈 값은 허용되지 않습니다.";
+    private final static String ERROR_NUMBER_TYPE = "정수 숫자만 가능합니다.";
 
     @Test
     void 빈_값이_들어오면_예외가_발생한다() {

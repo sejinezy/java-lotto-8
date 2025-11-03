@@ -3,7 +3,7 @@ package lotto.domain;
 public class PurchaseAmount {
 
     private final static int MONEY_UNIT = 1000;
-    private final static String ERR_AMOUNT_UNIT = "[ERROR] 구입 금액은 1,000단위만 가능합니다.";
+    private final static String ERR_AMOUNT_UNIT = "구입 금액은 1,000단위만 가능합니다.";
 
     private final int amount;
 
