@@ -11,14 +11,19 @@ import lotto.service.ResultSheet;
 
 public class OutputView {
 
+    public static final String PRINT_LOTTO_CART_MESSAGE = "%n%d개를 구매했습니다.%n";
+    public static final String WINNING_STATISTICS_MESSAGE = "당첨 통계%n---%n";
+    public static final String RESULT_SHEET_HAS_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개%n";
+    public static final String RESULT_SHEET_DONT_HAVE_MESSAGE = "%d개 일치 (%,d원) - %d개%n";
+    public static final String PRINT_RATE_OF_RETURN_MESSAGE = "총 수익률은 %.1f%%입니다.%n";
+
     public void printLottoCount(LottoCart lottoCart) {
-        System.out.println();
-        System.out.println(lottoCart.lottoCart().size() + "개를 구매했습니다.");
+        System.out.printf(PRINT_LOTTO_CART_MESSAGE, lottoCart.lottoCart().size());
     }
 
     public void printLottoCart(LottoCart lottoCart) {
         for (Lotto lotto : lottoCart.lottoCart()) {
-            List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
+            List<Integer> numbers = new ArrayList<>(lotto.numbers());
             numbers.sort(Comparator.naturalOrder());
             System.out.println(numbers);
         }
@@ -26,26 +31,24 @@ public class OutputView {
 
     public void printWinningStatistics(ResultSheet resultSheet) {
         System.out.println();
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.printf(WINNING_STATISTICS_MESSAGE);
 
         for (Entry<Rank, Integer> entry : resultSheet.getResultSheet().entrySet()) {
             Rank rank = entry.getKey();
             Integer count = entry.getValue();
-            String commaNum = String.format("%,d", rank.getPrice());
 
-            if(rank == Rank.SECOND){
-                System.out.println(rank.getNumberOfMatches() + "개 일치, 보너스 볼 일치 (" + commaNum + "원) - " + count + "개");
-            } else {
-                System.out.println(rank.getNumberOfMatches() + "개 일치 (" + commaNum + "원) - " + count + "개");
-            }
-
+            System.out.printf(getMessageBy(rank), rank.getNumberOfMatches(), rank.getPrice(), count);
         }
+    }
 
+    private String getMessageBy(Rank rank) {
+        if (rank == Rank.SECOND) {
+            return RESULT_SHEET_HAS_BONUS_MESSAGE;
+        }
+        return RESULT_SHEET_DONT_HAVE_MESSAGE;
     }
 
     public void printRateOfReturn(double rateOfReturn) {
-
-        System.out.println("총 수익률은 " + String.format("%.1f",rateOfReturn) + "%입니다.");
+        System.out.printf(PRINT_RATE_OF_RETURN_MESSAGE, rateOfReturn);
     }
 }
