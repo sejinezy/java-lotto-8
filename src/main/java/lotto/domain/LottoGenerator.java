@@ -12,11 +12,10 @@ public class LottoGenerator {
         this.pickRandomNumbers = pickRandomNumbers;
     }
 
-    public LottoCart generateLottoList(PurchaseAmount purchaseAmount) {
+    public LottoCart generateLottoCart(PurchaseAmount purchaseAmount) {
         List<Lotto> lottoCart = new ArrayList<>();
-        int amount = purchaseAmount.getAmount();
-        int time = amount / 1000;
-        for (int i = 0; i < time; i++) {
+        int count = purchaseAmount.calculateLottoCount();
+        for (int i = 0; i < count; i++) {
             lottoCart.add(generateLotto());
         }
         return new LottoCart(lottoCart);
