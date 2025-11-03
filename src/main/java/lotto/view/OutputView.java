@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map.Entry;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCart;
-import lotto.service.Rank;
-import lotto.service.ResultSheet;
+import lotto.domain.Rank;
+import lotto.domain.ResultSheet;
 
 public class OutputView {
 

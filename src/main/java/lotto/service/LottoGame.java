@@ -5,6 +5,8 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCart;
 import lotto.domain.PurchaseAmount;
+import lotto.domain.Rank;
+import lotto.domain.ResultSheet;
 import lotto.domain.WinningLotto;
 import lotto.domain.WinningNumbers;
 

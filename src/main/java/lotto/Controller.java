@@ -8,7 +8,7 @@ import lotto.domain.LottoCart;
 import lotto.domain.PurchaseAmount;
 import lotto.domain.WinningLotto;
 import lotto.domain.WinningNumbers;
-import lotto.service.ResultSheet;
+import lotto.domain.ResultSheet;
 import lotto.view.InputRetryHandler;
 import lotto.view.InputView;
 import lotto.view.OutputView;

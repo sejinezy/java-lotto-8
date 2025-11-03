@@ -6,7 +6,7 @@ import lotto.domain.PurchaseAmount;
 import lotto.domain.WinningLotto;
 import lotto.domain.port.PickRandomNumbers;
 import lotto.service.LottoGame;
-import lotto.service.ResultSheet;
+import lotto.domain.ResultSheet;
 
 public class LottoUseCase {
 

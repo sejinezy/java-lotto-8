@@ -1,4 +1,4 @@
-package lotto.service;
+package lotto.domain;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

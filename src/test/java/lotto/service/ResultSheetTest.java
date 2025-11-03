@@ -2,6 +2,8 @@ package lotto.service;
 
 import static org.assertj.core.api.Assertions.*;
 
+import lotto.domain.Rank;
+import lotto.domain.ResultSheet;
 import org.junit.jupiter.api.Test;
 
 class ResultSheetTest {
