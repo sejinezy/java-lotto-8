@@ -2,33 +2,32 @@ package lotto.domain;
 
 public class PurchaseAmount {
 
+    private final static int MONEY_UNIT = 1000;
+    private final static String ERR_AMOUNT_UNIT = "[ERROR] 구입 금액은 1,000단위만 가능합니다.";
+
     private final int amount;
 
-    public PurchaseAmount(String amountInput) {
-        int amount = parseInteger(amountInput);
-        validateUnit(amount);
-        this.amount = amount;
-    }
-
-    private int parseInteger(String amountInput) {
-        try {
-            return Integer.parseInt(amountInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 가능합니다.");
-        }
+    public PurchaseAmount(int amountInput) {
+        validateUnit(amountInput);
+        this.amount = amountInput;
     }
 
     private void validateUnit(int amount) {
-        if (! is1000Unit(amount)) {
-            throw new IllegalArgumentException("[ERROR] 1,000단위만 가능합니다.");
+        if (!is1000Unit(amount)) {
+            throw new IllegalArgumentException(ERR_AMOUNT_UNIT);
         }
     }
+
     private boolean is1000Unit(int amount) {
-        return amount % 1000 == 0;
+        return amount % MONEY_UNIT == 0;
     }
 
     public int getAmount() {
         return amount;
+    }
+
+    public int calculateLottoCount() {
+        return amount / MONEY_UNIT;
     }
 
 
