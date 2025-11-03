@@ -15,29 +15,33 @@ public class Validator {
     private Validator() {
     }
 
-    public static void range(Integer number) {
-        if (number < NUMBER_MIN || number > NUMBER_MAX) {
+    public static void validateRange(Integer number) {
+        if (!isInRange(number)) {
             throw new IllegalArgumentException(ERR_NUMBER_RANGE);
         }
     }
 
-    public static void range(List<Integer> numbers) {
+    private static boolean isInRange(Integer number) {
+        return number >= NUMBER_MIN && number <= NUMBER_MAX;
+    }
+
+    public static void validateEachRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            range(number);
+            validateRange(number);
         }
     }
 
-    public static void duplication(List<Integer> numbers) {
-        if (!isUnique(numbers)) {
+    public static void validateNoDuplicates(List<Integer> numbers) {
+        if (!isAllUnique(numbers)) {
             throw new IllegalArgumentException(ERR_DUPLICATE_NUMBERS);
         }
     }
 
-    private static boolean isUnique(List<Integer> numbers) {
+    private static boolean isAllUnique(List<Integer> numbers) {
         return numbers.size() == new HashSet<>(numbers).size();
     }
 
-    public static void size(List<Integer> numbers) {
+    public static void validateSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException(ERR_LOTTO_SIZE);
         }

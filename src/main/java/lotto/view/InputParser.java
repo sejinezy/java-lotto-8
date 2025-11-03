@@ -33,15 +33,15 @@ public class InputParser {
         return numbers;
     }
 
-    public static List<Integer> changeType(List<String> winningNumbersInput) {
+    public static List<Integer> toInts(List<String> winningNumbersInput) {
         List<Integer> numbers = new ArrayList<>();
         for (String number : winningNumbersInput) {
-            numbers.add(changeType(number));
+            numbers.add(toInt(number));
         }
         return numbers;
     }
 
-    public static int changeType(String bonusInput) {
+    public static int toInt(String bonusInput) {
         try {
             return Integer.parseInt(bonusInput);
         } catch (NumberFormatException e) {

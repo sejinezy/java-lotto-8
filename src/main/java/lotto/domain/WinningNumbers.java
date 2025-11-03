@@ -9,9 +9,9 @@ public class WinningNumbers {
     private final List<Integer> winningNumbers;
 
     public WinningNumbers(List<Integer> winningNumbersInput) {
-        Validator.size(winningNumbersInput);
-        Validator.range(winningNumbersInput);
-        Validator.duplication(winningNumbersInput);
+        Validator.validateSize(winningNumbersInput);
+        Validator.validateEachRange(winningNumbersInput);
+        Validator.validateNoDuplicates(winningNumbersInput);
         winningNumbers = winningNumbersInput;
     }
 

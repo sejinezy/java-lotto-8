@@ -7,7 +7,7 @@ public class BonusNumber {
     private final int bonus;
 
     public BonusNumber(int bonusInput) {
-        Validator.range(bonusInput);
+        Validator.validateRange(bonusInput);
         this.bonus = bonusInput;
     }
 

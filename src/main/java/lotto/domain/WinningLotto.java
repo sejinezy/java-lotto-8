@@ -8,16 +8,16 @@ public record WinningLotto(WinningNumbers winningNumbers, BonusNumber bonusNumbe
     private static final int WINNING_LOTTO_SIZE = 7;
 
     public WinningLotto {
-        validateDuplication(winningNumbers, bonusNumber);
+        validateNoOverlap(winningNumbers, bonusNumber);
     }
 
-    private void validateDuplication(WinningNumbers winningNumbers, BonusNumber bonusNumber) {
-        if (!isUnique(winningNumbers, bonusNumber)) {
+    private void validateNoOverlap(WinningNumbers winningNumbers, BonusNumber bonusNumber) {
+        if (!isBonusDistinctFromWinningNumbers(winningNumbers, bonusNumber)) {
             throw new IllegalArgumentException(ERR_NUMBERS_DUPLICATION);
         }
     }
 
-    private boolean isUnique(WinningNumbers winningNumbers, BonusNumber bonusNumber) {
+    private boolean isBonusDistinctFromWinningNumbers(WinningNumbers winningNumbers, BonusNumber bonusNumber) {
         HashSet<Integer> result = new HashSet<>();
         result.add(bonusNumber.getBonus());
         result.addAll(winningNumbers.getWinningNumbers());
