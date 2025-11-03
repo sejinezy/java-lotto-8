@@ -54,6 +54,43 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 빈_값이_들어오면_예외_발생() {
+        assertSimpleTest(() -> {
+            runException(" ");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+
+        assertSimpleTest(() -> {
+            runException("8000"," ");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+
+        assertSimpleTest(() -> {
+            runException("8000","1,2,3,4,5,6"," ");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 숫자가_아닌_값이_들어오면_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+
+        assertSimpleTest(() -> {
+            runException("8000","1,2,3,a,5,6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+
+        assertSimpleTest(() -> {
+            runException("8000","1,2,3,4,5,6","a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
